@@ -1,5 +1,6 @@
+import { Link } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, Pressable } from "react-native";
 import { Text, useTheme } from "react-native-paper";
 
 const TripCard = ({ trip }: any) => {
@@ -7,25 +8,28 @@ const TripCard = ({ trip }: any) => {
   const cardColor = theme.dark ? "#292929ff" : "#eae3e3ff";
   const locationColor = theme.dark ? "#eae3e3ff" : "#212121";
   return (
-    <View style={[styles.tripContainer, { backgroundColor: cardColor }]}>
-      <Image style={styles.tripImage} source={{ uri: trip.image }} />
-      <View style={styles.tripDetails}>
-        <Text style={[styles.locationText, { color: locationColor }]}>
-          {trip.location}
-        </Text>
-        <Text>
-          {trip.price} - {trip.duration}
-        </Text>
+    <Link style={{ width: "100%", alignItems: "center" }} href={"/trip"}>
+      <View style={[styles.tripContainer, { backgroundColor: cardColor }]}>
+        <Image style={styles.tripImage} source={{ uri: trip.image }} />
+        <View style={styles.tripDetails}>
+          <Text style={[styles.locationText, { color: locationColor }]}>
+            {trip.location}
+          </Text>
+          <Text>
+            {trip.price} - {trip.duration}
+          </Text>
+        </View>
       </View>
-    </View>
+    </Link>
   );
 };
 
 const styles = StyleSheet.create({
   tripContainer: {
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "flex-start",
-    margin: 15,
+    width: "100%",
     borderRadius: 18,
     padding: 10,
   },

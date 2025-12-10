@@ -11,6 +11,11 @@ export default function Trips() {
       <FlatList
         data={trips}
         renderItem={({ item }) => <TripCard trip={item} />}
+        contentContainerStyle={{
+          gap: 15,
+          paddingBottom: 20,
+          marginHorizontal: 20,
+        }}
       />
     </View>
   );
