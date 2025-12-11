@@ -10,6 +10,7 @@ const tintColorDark = '#fff';
 
 export const Colors = {
   light: {
+    "cardColor":"#efefefff",
     "primary": "rgb(120, 69, 172)",
     "onPrimary": "rgb(255, 255, 255)",
     "primaryContainer": "rgb(240, 219, 255)",
@@ -52,6 +53,7 @@ export const Colors = {
     "backdrop": "rgba(51, 47, 55, 0.4)"
   },
   dark: {
+    "cardColor":"#292929ff",
    "primary": "rgb(220, 184, 255)",
     "onPrimary": "rgb(71, 12, 122)",
     "primaryContainer": "rgb(95, 43, 146)",

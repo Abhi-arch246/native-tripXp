@@ -4,7 +4,9 @@ const trips = [
         title: "Beach Getaway",
         location: "Maldives",
         duration: "5 days",
+        date : "17 August 2025",
         price: 1500,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",
     },
     {
@@ -12,7 +14,9 @@ const trips = [
         title: "Mountain Adventure",
         location: "Swiss Alps",
         duration: "7 days",
+        date : "24 September 2025",
         price: 2000,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",
     },
     {
@@ -20,7 +24,9 @@ const trips = [
         title: "City Exploration",
         location: "New York",
         duration: "4 days",
+        date : "21 October 2025",
         price: 1200,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",   
     },
     {
@@ -28,7 +34,9 @@ const trips = [
         title: "Cultural Tour",
         location: "Kyoto, Japan",
         duration: "6 days",
+        date : "30 November 2025",
         price: 1800,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",
     },
     {
@@ -36,7 +44,9 @@ const trips = [
         title: "Beach Getaway",
         location: "Maldives",
         duration: "5 days",
+        date : "12 December 2024",
         price: 1500,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",
     },
     {
@@ -44,7 +54,9 @@ const trips = [
         title: "Mountain Adventure",
         location: "Swiss Alps",
         duration: "7 days",
+        date : "26 January 2025",
         price: 2000,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",
     },
     {
@@ -52,7 +64,9 @@ const trips = [
         title: "City Exploration",
         location: "New York",
         duration: "4 days",
+        date  : "10 February 2025",
         price: 1200,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",   
     },
     {
@@ -60,7 +74,9 @@ const trips = [
         title: "Cultural Tour",
         location: "Kyoto, Japan",
         duration: "6 days",
+        date : "11 December 2025",
         price: 1800,
+        totalCost: 5000,
         image: "https://cdn-icons-png.flaticon.com/512/8983/8983164.png",
     }
 ]
