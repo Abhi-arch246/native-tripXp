@@ -1,14 +1,14 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, View, Pressable } from "react-native";
+import { Image, StyleSheet, View, TouchableOpacity } from "react-native";
 import { Text, useTheme } from "react-native-paper";
 
 const TripCard = ({ trip }: any) => {
   const theme = useTheme();
-  const cardColor = theme.dark ? "#292929ff" : "#eae3e3ff";
+  const cardColor = theme.dark ? "#292929ff" : "#efefefff";
   const locationColor = theme.dark ? "#eae3e3ff" : "#212121";
   return (
-    <Link style={{ width: "100%", alignItems: "center" }} href={"/trip"}>
+    <TouchableOpacity onPress={() => router.push(`/${trip.id}`)}>
       <View style={[styles.tripContainer, { backgroundColor: cardColor }]}>
         <Image style={styles.tripImage} source={{ uri: trip.image }} />
         <View style={styles.tripDetails}>
@@ -20,7 +20,7 @@ const TripCard = ({ trip }: any) => {
           </Text>
         </View>
       </View>
-    </Link>
+    </TouchableOpacity>
   );
 };
 
