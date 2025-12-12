@@ -55,12 +55,10 @@ const Trip = () => {
       contentContainerStyle={{
         paddingBottom: 40,
         marginHorizontal: 20,
-        marginVertical: 10,
+        marginTop: 60,
       }}
       ListHeaderComponent={
-        <>
-          <Stack.Screen options={{ title: "Trip Details" }} />
-
+        <View style={{ marginBottom: 30 }}>
           {/* HEADER SECTION */}
           <View style={styles.headerSection}>
             <Image style={styles.heroImage} source={{ uri: trip.image }} />
@@ -101,10 +99,18 @@ const Trip = () => {
               </Card.Content>
             </Card>
           </View>
-        </>
+        </View>
       }
       renderItem={({ item }) => (
-        <View style={{ marginBottom: 20 }}>
+        <View
+          style={{
+            marginBottom: 20,
+            borderColor: "#fff",
+            borderWidth: 1,
+            borderRadius: 16,
+            padding: 5,
+          }}
+        >
           {/* Date Header */}
           <View style={styles.dateHeader}>
             <Text style={styles.dateText}>{item.date}</Text>

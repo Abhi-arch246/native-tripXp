@@ -14,6 +14,7 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import merge from "deepmerge";
+import { useAuthContext } from "@hooks/use-auth-context";
 
 const { LightTheme, DarkTheme } = adaptNavigationTheme({
   reactNavigationLight: NavigationDefaultTheme,
@@ -28,6 +29,8 @@ const CombinedDarkTheme = merge(DarkTheme, customDarkTheme);
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  // const { isLoggedIn } = useAuthContext();
+  const isLoggedIn = false;
 
   const paperTheme =
     colorScheme === "dark" ? CombinedDarkTheme : CombinedDefaultTheme;
@@ -35,8 +38,12 @@ export default function RootLayout() {
   return (
     <PaperProvider theme={paperTheme}>
       <ThemeProvider value={paperTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack screenOptions={{ headerShown: false }}>
+          {!isLoggedIn ? (
+            <Stack.Screen name="(auth)" />
+          ) : (
+            <Stack.Screen name="(tabs)" />
+          )}
         </Stack>
       </ThemeProvider>
     </PaperProvider>

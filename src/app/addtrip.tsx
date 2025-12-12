@@ -1,19 +1,15 @@
 import React, { useState } from "react";
-import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-} from "react-native";
+import { View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useTheme, Text } from "react-native-paper";
 import { DatePickerModal } from "react-native-paper-dates";
 import EmojiPicker from "./components/EmojiPicker";
 import { Stack } from "expo-router";
+import PrimaryButton from "@components/ui/Buttons/PrimaryButton";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function AddTripScreen() {
   const theme = useTheme();
-  const cardColor = theme.dark ? "#292929ff" : "#efefefff";
   const [tripEmoji, setTripEmoji] = useState("🌍");
   const [tripName, setTripName] = useState("");
   const [members, setMembers] = useState("1");
@@ -22,13 +18,32 @@ export default function AddTripScreen() {
   const [showFromPicker, setShowFromPicker] = useState(false);
   const [showToPicker, setShowToPicker] = useState(false);
 
+  const handleCreateTrip = () => {
+    console.log("Trip Created:", {
+      tripEmoji,
+      tripName,
+      members,
+      fromDate,
+      toDate,
+    });
+  };
+
   return (
-    <View style={[styles.container, { backgroundColor: cardColor }]}>
+    <SafeAreaView style={{ flex: 1 }}>
       <Stack.Screen options={{ title: "Create a New Trip" }} />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Emoji */}
-        <View style={[{ flexDirection: "row", justifyContent: "center" }]}>
+      <KeyboardAwareScrollView
+        enableOnAndroid
+        enableAutomaticScroll
+        extraScrollHeight={100} // pushes the focused input above keyboard
+        keyboardOpeningTime={0} // fixes slow scroll on Android
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ padding: 16, paddingBottom: 10 }}
+      >
+        <Text style={styles.screenTitle}>Create a New Trip</Text>
+
+        {/* Emoji Picker */}
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <EmojiPicker value={tripEmoji} onChange={setTripEmoji} />
         </View>
 
@@ -36,7 +51,7 @@ export default function AddTripScreen() {
         <View style={styles.inputBlock}>
           <Text style={styles.label}>Trip Name</Text>
           <TextInput
-            style={styles.input}
+            style={[styles.input, { color: theme.colors.onSurface }]}
             placeholder="Ex: Goa Trip"
             placeholderTextColor="#888"
             value={tripName}
@@ -44,20 +59,20 @@ export default function AddTripScreen() {
           />
         </View>
 
-        {/* Members Count */}
+        {/* Members */}
         <View style={styles.inputBlock}>
           <Text style={styles.label}>Number of Members</Text>
           <TextInput
-            style={styles.input}
+            style={[styles.input, { color: theme.colors.onSurface }]}
             placeholder="Ex: 4"
-            placeholderTextColor="#ffffffff"
+            placeholderTextColor="#888"
             keyboardType="numeric"
             value={members}
             onChangeText={setMembers}
           />
         </View>
 
-        {/* Trip From Date */}
+        {/* From Date */}
         <View style={styles.inputBlock}>
           <Text style={styles.label}>From Date</Text>
 
@@ -81,7 +96,7 @@ export default function AddTripScreen() {
           />
         </View>
 
-        {/* Trip To Date */}
+        {/* To Date */}
         <View style={styles.inputBlock}>
           <Text style={styles.label}>To Date</Text>
 
@@ -105,35 +120,33 @@ export default function AddTripScreen() {
           />
         </View>
 
-        {/* Additional Notes */}
+        {/* Notes */}
         <View style={styles.inputBlock}>
           <Text style={styles.label}>Notes (Optional)</Text>
           <TextInput
-            style={styles.notesInput}
+            style={[styles.notesInput, { color: theme.colors.onSurface }]}
             placeholder="Add any notes about your trip..."
             placeholderTextColor="#888"
             multiline
           />
         </View>
 
-        {/* Create Trip Button */}
-        <TouchableOpacity style={styles.createButton}>
-          <Text style={styles.createButtonText}>Create Trip</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </View>
+        <PrimaryButton
+          title="Create Trip"
+          onPress={handleCreateTrip}
+          style={{ marginTop: 20 }}
+        />
+      </KeyboardAwareScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 12,
-  },
   screenTitle: {
     fontSize: 26,
     fontWeight: "700",
-    marginBottom: 24,
+    marginBottom: 20,
+    marginTop: 10,
   },
   inputBlock: {
     marginBottom: 24,
@@ -149,13 +162,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 14,
     fontSize: 16,
-  },
-  inputEmoji: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 12,
-    padding: 14,
-    fontSize: 24,
   },
   notesInput: {
     height: 120,
@@ -174,17 +180,5 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 16,
-  },
-  createButton: {
-    backgroundColor: "#4169E1",
-    padding: 16,
-    borderRadius: 14,
-    alignItems: "center",
-    marginTop: 10,
-  },
-  createButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
   },
 });
