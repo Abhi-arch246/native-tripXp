@@ -39,11 +39,13 @@ export default function RootLayout() {
     <PaperProvider theme={paperTheme}>
       <ThemeProvider value={paperTheme}>
         <Stack screenOptions={{ headerShown: false }}>
-          {!isLoggedIn ? (
-            <Stack.Screen name="(auth)" />
-          ) : (
-            <Stack.Screen name="(tabs)" />
-          )}
+          {/* {!isLoggedIn ? ( */}
+          <Stack.Screen name="(auth)" />
+          {/* ) : ( */}
+          <Stack.Screen name="(onboarding)" />
+
+          <Stack.Screen name="(tabs)" />
+          {/* )} */}
         </Stack>
       </ThemeProvider>
     </PaperProvider>

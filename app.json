@@ -31,7 +31,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/ic_launcher-web.png",
+          "image": "./assets/images/hot-air-balloon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#1e146c",

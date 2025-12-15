@@ -1,5 +1,6 @@
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Index() {
   return (
@@ -14,3 +15,9 @@ export default function Index() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
